@@ -1,4 +1,4 @@
 import "./src/style.css";
-// import "./index.html";
+import "./index.html";
 
 console.log("hello");
