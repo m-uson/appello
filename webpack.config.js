@@ -1,11 +1,11 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-// const FileManagerPlugin = require("filemanager-webpack-plugin");
+const FileManagerPlugin = require("filemanager-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 
 module.exports = {
-	entry: path.resolve(__dirname, "src", "index.js"),
+	entry: path.resolve(__dirname, "index.js"),
 	output: {
 		path: path.resolve(__dirname, "dist"),
 		filename: "index.js",
@@ -63,16 +63,16 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, "src", "index.html"),
+			template: path.resolve(__dirname, "index.html"),
 			filename: "index.html",
 		}),
-		// new FileManagerPlugin({
-		// 	events: {
-		// 		onStart: {
-		// 			delete: ["dist"],
-		// 		},
-		// 	},
-		// }),
+		new FileManagerPlugin({
+			events: {
+				onStart: {
+					delete: ["dist"],
+				},
+			},
+		}),
 		new MiniCssExtractPlugin({
 			filename: "assets/css/[name].css",
 		}),
